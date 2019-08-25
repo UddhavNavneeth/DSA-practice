@@ -133,4 +133,8 @@ int main() {
 	mergesort(array5, 0, 7);
 	
 	display(array5, 8);
+	
+	int array5[] = {10, 1, 3, 5, 7, 4, 13, 6};
+	cout<<"This is quick sort: "<<endl;
+//	quicksort(array5, 0, 7);
 }
