@@ -1,3 +1,6 @@
+//This is actually Linked List
+
+
 #include<iostream>
 using namespace std;
 
@@ -37,3 +40,5 @@ int main() {
 	}
 	display(nextNode);
 }
+
+
