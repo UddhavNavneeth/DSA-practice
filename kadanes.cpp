@@ -41,7 +41,7 @@ void quadTime(int array[], int n) {
 int main() {
 	int array[8] = {-2,-3,4,-1,-2,1,5,-3};
 	cubicTime(array,8);
-	
+	quadTime(array,8);
 	
 	return 0;
 	
