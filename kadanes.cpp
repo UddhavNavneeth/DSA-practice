@@ -38,10 +38,28 @@ void quadTime(int array[], int n) {
 	cout<<max<<endl;
 }
 
+void kadanes(int array[], int n) {
+	int max=array[0];
+	int maxSum=array[0];
+	for (int i=0; i<n; i++) {
+		if (maxSum+array[i]>array[i]) {
+			maxSum = maxSum+array[i];
+		} else {
+			maxSum = array[i];
+		}
+		
+		if (maxSum>max) {
+			max = maxSum;
+		}
+	}
+	cout<<max<<endl;
+}
+
 int main() {
 	int array[8] = {-2,-3,4,-1,-2,1,5,-3};
 	cubicTime(array,8);
 	quadTime(array,8);
+	kadanes(array,8);
 	
 	return 0;
 	
