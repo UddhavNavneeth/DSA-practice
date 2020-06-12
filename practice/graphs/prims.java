@@ -75,7 +75,7 @@ class Main {
     }
 
     dist[0]=0; // initializing for first node
-    int nodes=0; //count of number of nodes in MST
+    // int nodes=0; //count of number of nodes in MST
 
 // adding edges from first node into pq
     for (int i=0;i<v;i++) {
@@ -85,16 +85,16 @@ class Main {
       }
     }
 
-while (nodes!=v-1) {
+while (pq.size()!=0) {
   Edge edge = pq.poll();
   if (dist[edge.n2]>edge.w) {
     parent[edge.n2]=edge.n1;
     dist[edge.n2]=edge.w;
-    nodes++;
+    // nodes++;
     // adding new edges to pq
     for (int i=0;i<v;i++) {
       if (i!=edge.n1 && mat[edge.n2][i]!=0) {
-        Edge edgeN = new Edge(edge.n2,i,dist[edge.n2]+mat[edge.n2][i]);
+        Edge edgeN = new Edge(edge.n2,i,mat[edge.n2][i]);
         pq.add(edgeN);
       }
     }
