@@ -7,9 +7,6 @@
 class TopologicalSort
 {
     static void dfs(int[] ans, int[] i, boolean[] visited, int at,ArrayList<ArrayList<Integer>> list) {
-        // if (visited[at]) {
-        //     return;
-        // }
         
         visited[at]=true;
         for (int node=0;node<list.get(at).size();node++) {
@@ -24,6 +21,8 @@ class TopologicalSort
     
     static int[] topoSort(ArrayList<ArrayList<Integer>> list, int N)
     {
+
+        // DFS Method
        int[] ans = new int[N];
        boolean[] visited = new boolean[N];
        int[] i = {0};
@@ -38,4 +37,39 @@ class TopologicalSort
     //   System.out.println();
        
        return ans;
+
+        // BFS Method Kahn's algorithm
+        // int[] indegree = new int[N];
+        // for (int i=0;i<list.size();i++) {
+        //     for (int j=0;j<list.get(i).size();j++) {
+        //         indegree[list.get(i).get(j)]++;
+        //     }
+        // }
+        
+        // Queue<Integer> q = new LinkedList<Integer>();
+        // int[] ans = new int[N];
+        // int pos = N-1;
+        
+        // for (int i=0; i<N; i++) {
+        //     if (indegree[i] == 0) {
+        //         q.add(i);
+        //         ans[pos--]=i;
+        //     }
+        // }
+        
+        // while (q.size() != 0) {
+        //     int vertex = q.poll();
+        //     for (int i=0;i<list.get(vertex).size();i++) {
+        //         indegree[list.get(vertex).get(i)]--;
+        //         if (indegree[list.get(vertex).get(i)] == 0) {
+        //             q.add(indegree[list.get(vertex).get(i)]);
+        //             ans[pos--] = indegree[list.get(vertex).get(i)];
+        //         }
+        //     }
+        // }
+        
+        // return ans;
+
+
     }
+}
