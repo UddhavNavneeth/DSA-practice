@@ -1,37 +1,55 @@
-// Question: https://www.interviewbit.com/problems/numrange/
-// NOT MY SOLUTION
-// ANSWER I FOUND IN THE COMMENTS
-// I STILL HAVEN'T UNDERSTOOD IT
+// link to the question:
+// https://www.interviewbit.com/problems/numrange/
+// Did this using gfg
 
-// The trick here is to calculate the number of continuous subsequences less than (B-1)
-// and number of continuous subsequences less than (C)
-
-// then the answer would be : calc(C) - calc(B-1).
-
-// now we change the problem to just find the number of continous subsequences lesser than a given K. we can do that using two pointer :
-
-public int numRange(int[] A, int B, int C) {
-    int x = countSubarrayLessThan(A, B - 1);
-    int y = countSubarrayLessThan(A, C);
-    return y - x;
-}
-
-static int countSubarrayLessThan(int arr[], int k) {
-    int start = 0, end = 0;
-    int count = 0, sum = arr[0];
-
-    while (start < arr.length && end < arr.length) {
-        if (sum <= k) {
-            end++;
-            if (end >= start)
-                count += end - start;
-            if (end < arr.length)
-                sum += arr[end];
-        } else {
-            sum -= arr[start];
-            start++;
+public class Solution {
+    public int numRangeLessThanK(ArrayList<Integer> A, int K) {
+        int start = 0;
+        int end = 0;
+        int sum = A.get(0);
+        int cntr = 0;
+        
+        while (start < A.size() && end < A.size()) {
+            if (sum < K) {
+                end++;
+                
+                if (end >= start) {
+                    cntr += end - start;
+                }
+                
+                if (end < A.size()) {
+                    sum += A.get(end);
+                }
+            } else {
+                sum -= A.get(start);
+                start++;
+            }
         }
+        
+        return cntr;
     }
-
-    return count;
+    
+    
+    public int numRange(ArrayList<Integer> A, int B, int C) {
+        // O(n^2)
+        // int cntr = 0;
+        // for (int i=0; i<A.size(); i++) {
+        //     int sum = 0;
+        //     for (int j=i; j<A.size(); j++) {
+        //         sum += A.get(j);
+        //         if (sum > C) {
+        //             break;
+        //         }
+        //         if (sum >= B && sum <= C) {
+        //             cntr++;
+        //         }
+        //     }
+        // }
+        // return cntr;
+        
+        int cntrC = numRangeLessThanK(A, C+1);
+        int cntrB = numRangeLessThanK(A, B);
+        
+        return cntrC - cntrB;
+    }
 }
