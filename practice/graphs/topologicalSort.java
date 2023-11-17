@@ -62,8 +62,8 @@ class TopologicalSort
         //     for (int i=0;i<list.get(vertex).size();i++) {
         //         indegree[list.get(vertex).get(i)]--;
         //         if (indegree[list.get(vertex).get(i)] == 0) {
-        //             q.add(indegree[list.get(vertex).get(i)]);
-        //             ans[pos--] = indegree[list.get(vertex).get(i)];
+        //             q.add(list.get(vertex).get(i));
+        //             ans[pos--] = list.get(vertex).get(i);
         //         }
         //     }
         // }
